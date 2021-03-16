@@ -5,7 +5,47 @@ export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib/"
 
 cd "/root/wine-git"
 echo "[STAGE 1/4] Configure"
-./configure --prefix="/" LDFLAGS="-L/usr/local/lib" || exit 1
+./configure --prefix="/" LDFLAGS="-L/usr/local/lib" --without-alsa \
+             --without-capi \
+             --without-cms \
+             --without-coreaudio \
+             --without-cups \
+             --without-curses \
+             --without-dbus \
+             --without-fontconfig \
+             --without-freetype \
+             --without-gphoto \
+             --without-glu \
+             --without-gnutls \
+             --without-gsm \
+             --without-gstreamer \
+             --without-hal \
+             --without-jpeg \
+             --without-ldap \
+             --without-mpg123 \
+             --without-openal \
+             --without-opencl \
+             --without-opengl \
+             --without-osmesa \
+             --without-oss \
+             --without-png \
+             --without-sane \
+             --without-tiff \
+             --without-v4l \
+             --without-xcomposite \
+             --without-xcursor \
+             --without-xinerama \
+             --without-xinput \
+             --without-xinput2 \
+             --without-xml \
+             --without-xrandr \
+             --without-xrender \
+             --without-xshape \
+             --without-xshm \
+             --without-xslt \
+             --without-xxf86vm \
+             --without-zlib \
+             || exit 1
 
 echo "[STAGE 2/4] Make"
 numberOfSteps="$(make __builddeps__ --no-print-directory -nrRk 2> /dev/null|wc -l)"
